@@ -285,15 +285,15 @@ public struct AlertToast: View{
                         .foregroundColor(color)
                 case .systemImage(let name, let color):
                     Image(systemName: name)
+                        .hudModifier()
+                        .foregroundColor(color)
+                case .image(let name, let color):
+                    Image(name)
 //                        .hudModifier()
 //                        .foregroundColor(color)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: 20, maxHeight: 20, alignment: .top)
-                case .image(let name, let color):
-                    Image(name)
-                        .hudModifier()
-                        .foregroundColor(color)
                 case .loading:
                     ActivityIndicator()
                 case .regular:
