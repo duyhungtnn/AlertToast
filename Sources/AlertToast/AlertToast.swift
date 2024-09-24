@@ -285,8 +285,11 @@ public struct AlertToast: View{
                         .foregroundColor(color)
                 case .systemImage(let name, let color):
                     Image(systemName: name)
-                        .hudModifier()
-                        .foregroundColor(color)
+//                        .hudModifier()
+//                        .foregroundColor(color)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: 20, maxHeight: 20, alignment: .top)
                 case .image(let name, let color):
                     Image(name)
                         .hudModifier()
@@ -319,9 +322,9 @@ public struct AlertToast: View{
             .padding(.vertical, 8)
             .frame(minHeight: 50)
             .alertBackground(style?.backgroundColor ?? nil)
-            .clipShape(Capsule())
-            .overlay(Capsule().stroke(Color.gray.opacity(0.2), lineWidth: 1))
-            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 6)
+            .clipShape(RoundedRectangle(cornerRadius: 8))
+            .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.green.opacity(1), lineWidth: 1))
+            .shadow(color: Color.black.opacity(0.01), radius: 5, x: 0, y: 6)
             .compositingGroup()
         }
         .padding(.top)
